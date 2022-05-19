@@ -38,6 +38,12 @@ body{
         color: blueviolet;
     }
 
+.sep{
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-top: 20px;
+}
+
 .ctx-works{
     display: flex;
     justify-content: space-between;
@@ -61,8 +67,12 @@ body{
     display: flex;
     justify-content: center;
     padding: 20px;
-    background: #333;
-    margin-left: 20px;
+    background: rgb(117, 117, 117);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    width: fit-content;
+    border-radius: 2%;
 }
 
     .reg-form{

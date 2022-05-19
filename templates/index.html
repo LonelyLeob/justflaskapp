@@ -2,13 +2,17 @@
 
 {% block content %}
 <h1>My Potfolio Site</h1>
-<div class="ctx-works">
-    {% for i in lst %}
-        <div class="card-work">
-            <h3>{{ i.title }}</h3>
-            <p>{{ i.desc }}</p>
-            <a href='/works/{{ i.id }}'>Показать полностью...</a>
-        </div>
-    {% endfor %}
+<div class="container">
+    <h2>Мои дизайны</h2>
+    <div class="ctx-works">
+        {% for i in lst %}
+            <div class="card-work">
+                <h3>{{ i.title }}</h3>
+                <p>{{ i.desc }}</p>
+                <a href='/works/{{ i.id }}'>Показать полностью...</a>
+            </div>
+        {% endfor %}
+    </div>
 </div>
+<hr class="sep">
 {% endblock %}
