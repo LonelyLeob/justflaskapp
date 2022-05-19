@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block nav %}
+{{ super() }}
+{% endblock %}
+
+{% block form %}
+{% for cat, msg in get_flashed_messages(True) %}
+<div class="flash {{cat}}">{{ msg }}</div>
+{% endfor %}
+<form action='{{ url_for('add_work') }}' method="post" class="form_work">
+    <p><label>Название работы: </label><input type="text" name="title" value="" required />
+    <p><label>Описание работы: </label>
+    <p><textarea name="desc" rows="5" cols="40"></textarea>
+    <p><input type="submit" value="Добавить" />
+</form>
+
+{% endblock %}

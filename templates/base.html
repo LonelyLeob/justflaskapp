@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" href="{{ url_for('static', filename='firstapp/style.css') }}" rel="stylesheet">
+    <title>{{ title }}</title>
+</head>
+<body>
+    {% block nav %}
+    <div class="nav-tools">
+            <div class="nav-main">
+                <a href="/works">Главная</a>
+                <a href="/add_work">Добавить работу</a>
+            </div>
+            <div class="nav-other">
+                <a href="/auth">Войти</a>
+                <a href="/reg">Зарегистрироваться</a>
+            </div>
+    </div>
+    {% endblock %}
+
+    {% block content %}
+    {% endblock %}
+
+    {% block form %}
+    {% endblock %}
+
+    {% block detail %}
+    {% endblock %}
+
+    {% block reg %}
+    {% endblock %}
+
+    {% block auth %}
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block auth %}
+{% for cat, msg in get_flashed_messages(True) %}
+<div class="flash {{cat}}">{{ msg }}</div>
+{% endfor %}
+<form action="/auth" method="post" class="form-auth">
+<p><label>Имя пользователя:</label><input type="text" name="uname" value="" required />
+<p><label>Пароль:</label><input type="password" name="pwd" value="" required />
+<p><input type='submit' value="Войти" />
+{% endblock %}

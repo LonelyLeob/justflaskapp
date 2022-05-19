@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block reg %}
+        {% for cat, msg in get_flashed_messages(True) %}
+        <div class="flash {{cat}}">{{ msg }}</div>
+        {% endfor %}
+        <div class="form-body">
+                <form action="/reg" method="post" class="reg-form">
+                    <h3 class="title-text">Регистрация</h3>
+                        <p><label>Имя пользователя:</label><input type="text" name="uname" value="" required />
+                        <p><label>E-mail:</label><input type="text" name="email" value="" required />
+                        <p><label>Пароль:</label><input type="password" name="pwd" value="" required />
+                        <p><label>Повторите пароль:</label><input type="password" name="pwd-again" value="" required />
+                    <p><input type='submit' value="Зарегистрироваться" class="btns" />
+                </form>
+        </div>
+{% endblock %}
