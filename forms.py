@@ -7,3 +7,7 @@ class LoginForm(FlaskForm):
     pwd = PasswordField("Пароль :", validators=[DataRequired(), Length(min=4, max=16)])
     remember = BooleanField("Запомнить меня", default=False)
     submit = SubmitField("Войти")
+
+class AddWorks(FlaskForm):
+    title = StringField("Название работы ")
+    desc = TextAreaField("Описание работы: ")

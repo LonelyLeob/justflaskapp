@@ -5,7 +5,7 @@ from dbase import FDB
 from werkzeug.security import generate_password_hash as gph, check_password_hash as cph
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from userlogin import UserLogin as UL
-from forms import LoginForm
+from forms import *
 
 #get wsgi-app from Flask class and setup tokens
 app = Flask(__name__)
@@ -70,10 +70,12 @@ def add_work():
     title = 'Добавить работу'
 
     if request.method == 'POST':
-            res = accdb.addWorks(request.form['title'], request.form['desc'])
-            if not res:
-                flash('Ошибка добавления твоей работы', category='error')
-            else: flash('Работа успешно добавлена, проверяй:)', category='success')
+        file = request.files['file']
+        img = file.read()
+        res = accdb.addWorks(request.form['title'], request.form['desc'], img)
+        if not res:
+            flash('Ошибка добавления твоей работы', category='error')
+        else: flash('Работа успешно добавлена, проверяй:)', category='success')
     
     return rt('add_work.html', title=title)
 
@@ -85,7 +87,8 @@ def show_work(id_work):
     #extra-data
     title = f'Работа № {id_work}'
     
-    name, desc = accdb.getWork(id_work)
+    name, desc, photo = accdb.getWork(id_work)
+
     if name == None:
         abort(404)
 
