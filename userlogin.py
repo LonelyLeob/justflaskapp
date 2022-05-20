@@ -30,3 +30,9 @@ class UserLogin(UserMixin):
         else: img = self.__user['photo']
 
         return img
+
+    def verifyExt(self, filename):
+        ext = filename.rsplit('.', 1)[1]
+        if ext == 'png' or ext == 'PNG':
+            return True
+        else: return False

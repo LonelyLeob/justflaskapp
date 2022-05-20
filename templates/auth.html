@@ -1,15 +1,13 @@
 {% extends 'base.html' %}
 
 {% block auth %}
-{% for cat, msg in get_flashed_messages(True) %}
-<div class="flash {{cat}}">{{ msg }}</div>
-{% endfor %}
 <div class="form-body">
     <form action="/auth" method="post" class="reg-form">
+        {{ form.hidden_tag() }}
         <h3 class="title-text">Авторизация</h3>
-            <p><label>Имя пользователя: </label><input type="text" name="uname" value="" required />
-            <p><label>Пароль: </label><input type="password" name="pwd" value="" required />
-            <p><input type="checkbox" name="remain"/> Запомнить меня
-            <p><input type='submit' value="Войти" class="btns"/>
+            <p>{{ form.uname.label() }} {{ form.uname() }}
+            <p>{{ form.pwd.label() }} {{ form.pwd() }}
+            <p>{{ form.remember.label() }} {{ form.remember() }}
+            <p>{{ form.submit()}}
 </div>
 {% endblock %}

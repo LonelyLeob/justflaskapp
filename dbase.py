@@ -64,3 +64,15 @@ class FDB:
             return True
         except sqlite3.Error as e:
             print(f'Ошибка: {e}')
+
+    def updateUserPic(self, userpic, user_id):
+        if not userpic:
+            return False
+        try:
+            binary = sqlite3.Binary(userpic)
+            self.__cur.execute(f'UPDATE users SET photo = ? WHERE id = ?', (binary, user_id))
+            self.__db.commit()
+        except sqlite3.Error as e:
+            print(f'Ошибка добавления аватара в БД: {e}')
+            return False
+        return True
