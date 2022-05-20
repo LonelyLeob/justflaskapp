@@ -11,12 +11,17 @@
     {% block nav %}
     <div class="nav-tools">
             <div class="nav-main">
-                <a href="/works">Главная</a>
-                <a href="/add_work">Добавить работу</a>
+                <a href="{{ url_for('index') }}">Главная</a>
+                <a href="{{ url_for('add_work') }}">Добавить работу</a>
+                {% if current_user.is_authenticated %}
+                <a href="{{ url_for('profile') }}">Профиль</a>
+                {% endif %}
             </div>
             <div class="nav-other">
+                {% if current_user.is_anonymous %}
                 <a href="/auth">Войти</a>
                 <a href="/reg">Зарегистрироваться</a>
+                {% endif %}
             </div>
     </div>
     {% endblock %}
@@ -34,6 +39,9 @@
     {% endblock %}
 
     {% block auth %}
+    {% endblock %}
+
+    {% block profile %}
     {% endblock %}
 </body>
 </html>

@@ -1,19 +1,23 @@
-from flask import Flask, render_template as rt, request, url_for as uf, g, flash, abort, redirect
+from flask import Flask, make_response, render_template as rt, request, url_for as uf, g, flash, abort, redirect
 import sqlite3 as sql
 import os
 from dbase import FDB
 from werkzeug.security import generate_password_hash as gph, check_password_hash as cph
-from flask_login import LoginManager, login_user
+from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from userlogin import UserLogin as UL
 
 
 app = Flask(__name__)
 a = app.config.from_object('tokens')
+
 logmng = LoginManager(app=app)
+logmng.login_view = 'auth_user'
+logmng.login_message = 'Для доступа необходимо авторизоваться:)'
+logmng.login_message_category = 'success'
 
 @logmng.user_loader
 def load_user(user_id):
-    print('Юзер загружен')
+    print(f'Юзер {user_id} загружен')
     return UL().fromDB(user_id, accdb)
 
 
@@ -106,11 +110,38 @@ def auth_user():
         user = accdb.getUserByName(request.form['uname'])
         if user and cph(user['pwd'], request.form['pwd']):
             userlogin = UL().create(user)
-            login_user(userlogin)
+            r = True if request.form.get('remain') else False
+            login_user(userlogin, remember=r)
             return redirect(uf('index'))
         flash('К сожалению, войти не удалось:(')
     return rt('auth.html', title=title)
 
+@app.route('/profile')
+@login_required
+def profile():
+
+    #extra-data
+    title = 'Профиль'
+
+    return rt('profile.html', title=title)
+
+@app.route('/userpic')
+@login_required
+def userpic():
+    img = current_user.getPhoto(app)
+    if not img: return None
+
+    h = make_response(img)
+    h.headers['Content-type'] = 'image/png'
+    return h
+
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    flash('Вы успешно вышли из профиля', category='success')
+    return redirect(uf('auth_user'))
 
 @app.teardown_appcontext
 def set_close_db(error):

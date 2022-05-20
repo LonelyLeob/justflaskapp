@@ -4,82 +4,96 @@ body{
     padding-right: 20px;
 }
 
-.btns{
-    background: -moz-linear-gradient(#D0ECF4, #5BC9E1, #D0ECF4);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00BBD6', endColorstr='#EBFFFF');
-    padding: 3px 7px;
-    color: #333;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
-    border: 1px solid rgb(191, 191, 191);
+a{
+    text-decoration: none;
 }
 
-.nav-tools{
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    flex-direction: row;
-    padding: 10px 10px;
-
-}
-
-.nav-main{
-    width: fit-content;
-
-}
-
-.nav-other{
-    width: fit-content;
-}
-
-    .nav-tools a{
-        text-decoration: none;
-        color: blueviolet;
+    .btns{
+        background: -moz-linear-gradient(#D0ECF4, #5BC9E1, #D0ECF4);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00BBD6', endColorstr='#EBFFFF');
+        padding: 3px 7px;
+        color: #333;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        border: 1px solid rgb(191, 191, 191);
     }
 
-.sep{
-    margin-left: 30px;
-    margin-right: 30px;
-    margin-top: 20px;
-}
-
-.ctx-works{
-    display: flex;
-    justify-content: space-between;
-}
-
-.card-work{
-    display: flex;
-    flex-direction: column;
-}
-
-    .card-work h3, p, a{
-        margin: 5px
-    }
-
-    .card-work a{
-        text-decoration: none;
-        color: rgb(60, 137, 152); 
-    }
-
-.form-body{
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-    background: rgb(117, 117, 117);
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px;
-    width: fit-content;
-    border-radius: 2%;
-}
-
-    .reg-form{
+    .nav-tools{
         display: flex;
-        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        flex-direction: row;
+        padding: 10px 10px;
+
     }
 
-    .title-text{
-        align-self: center;
+        .nav-main{
+            width: fit-content;
+
+        }
+
+        .nav-other{
+            width: fit-content;
+        }
+
+            .nav-tools a{
+                color: blueviolet;
+            }
+
+    .sep{
+        margin-left: 30px;
+        margin-right: 30px;
+        margin-top: 20px;
     }
+
+    .ctx-works{
+        display: flex;
+        flex-flow: row wrap;
+        margin-top: 20px;
+        justify-content: space-between;
+    }
+
+        .card-work{
+            display: flex;
+            flex-direction: column;
+        }
+
+            .card-work h3, p, a{
+                margin: 5px
+            }
+
+            .card-work a{
+                color: rgb(60, 137, 152); 
+            }
+
+    .form-body{
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+        background: rgb(117, 117, 117);
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 20px;
+        width: fit-content;
+        border-radius: 2%;
+    }
+
+        .reg-form{
+            display: flex;
+            flex-direction: column;
+        }
+
+        .title-text{
+            align-self: center;
+        }
+
+    .profile{
+        display: flex;
+    }
+
+        .profile-info{
+            height: fit-content;
+            width: fit-content;
+            align-self: flex-end;
+        }

@@ -59,7 +59,7 @@ class FDB:
 
     def addUser(self, uname, email, hpwd):
         try:
-            self.__cur.execute(f'INSERT INTO users ("uname", "email", "pwd") VALUES (?, ?, ?)', (uname, email, hpwd))
+            self.__cur.execute(f'INSERT INTO users ("uname", "email", "pwd", "photo") VALUES (?, ?, ?, NULL)', (uname, email, hpwd))
             self.__db.commit()
             return True
         except sqlite3.Error as e:

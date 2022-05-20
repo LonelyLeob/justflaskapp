@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block profile %}
+    <p>Профиль</p>
+    <div class="profile">
+        <div class="profile-media">
+            <img src="{{ url_for ('userpic') }}" width="150" height="150">
+        </div>
+        <div class="profile-info">
+            <p>Ваш e-mail: {{ current_user.getEmail() }}</p>
+            <p>Ваше имя: {{ current_user.getName() }}</p>
+        </div>
+    </div>
+    <a href="{{ url_for('logout') }}">Выйти из профиля</a>
+{% endblock %}
